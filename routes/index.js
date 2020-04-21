@@ -5,15 +5,13 @@ var db = require('../server');
 router.use(bodyParser.json());
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
-    var sql = "SELECT * FROM user";
+    var sql = "SELECT * FROM contacts ";
     db.query(sql, function(err, rowsn, fields) {
         if (err) {
             res.status(500).send({ error: 'Something failed!' });
         }
-
-        const mang = {"A":rowsn,"B":rowsn,"C":rowsn};
-        const mangm = {"mangtong" : mang};
+        const mang = [{"A":"a","B":"b"}];
+        const mangm = {"data" : rowsn,"tilet":mang};
         res.json(mangm);
     })
 });
