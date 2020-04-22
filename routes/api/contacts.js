@@ -19,6 +19,33 @@ router.get('/:id', function (req, res, next) {
         res.json(contactsment);
     })
 });
-
+/*post method for create user*/
+router.post('/add', function(req, res, next) {
+    var username = req.body.username;
+    var phone = req.body.phone;
+    var image = req.body.image;
+    var user_id = req.body.user_id;
+    var sql = `INSERT INTO contacts (user_id,username,phone,image) VALUES ("${user_id}","${username}","${phone}","${image}")`;
+    db.query(sql, function(err, result) {
+        if(err) {
+            res.status(500).send({ error: 'Something failed!' })
+        }
+        res.json({'status': 'success', id: result.insertId})
+    })
+});
+// router.put('/update', function(req, res, next) {
+//     var username = req.body.username;
+//     var phone = req.body.phone;
+//     var image = req.body.image;
+//     var user_id = req.body.user_id;
+//     var sql = `UPDATE user SET username="${username}", image="${image}" WHERE phone=${phone}`;
+//     var sql = `INSERT INTO contacts (user_id,username,phone,image) VALUES ("${user_id}","${username}","${phone}","${image}")`;
+//     db.query(sql, function(err, result) {
+//         if(err) {
+//             res.status(500).send({ error: 'Something failed!' })
+//         }
+//         res.json({'status': 'success', id: result.insertId})
+//     })
+// });
 module.exports = router;
 

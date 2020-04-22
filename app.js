@@ -12,6 +12,9 @@ var LoginRouter = require('./routes/api/login');
 var UserRouter = require('./routes/api/user');
 var DepartmentRouter = require('./routes/api/department');
 var ContactsRouter = require('./routes/api/contacts');
+var Message_personalRouter = require('./routes/api/message_personal');
+var Message_groupRouter = require('./routes/api/message_group');
+var chat_messageRouter = require('./routes/api/chat_message');
 
 var app = express();
 
@@ -32,6 +35,9 @@ app.use('/api', LoginRouter);
 app.use('/api/user', UserRouter);
 app.use('/api/department', DepartmentRouter);
 app.use('/api/contacts', ContactsRouter);
+app.use('/api/message_personal', Message_personalRouter);
+app.use('/api/message_group', Message_groupRouter);
+app.use('/api/chat_message', chat_messageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
